@@ -11,7 +11,7 @@
     <div [formGroupName]="i" style="display: flex">
         <input type="text" formControlName="name" placeholder="Customer name">
         <select formControlName="start_time">
-                <option>df</option>
+                <option *ngFor="let hour of start_hours">{{hour}}</option>
         </select>
         <select formControlName="end_time">
             <option>df</option>
@@ -23,3 +23,4 @@
 </div>
 </form>
 <button type="button" class="btn btn-primary" id="btn" (click)="onclick()" >Downloads</button>
+<pre *ngIf="isdiasplay">{{appoinmentform.value | json }}</pre>
