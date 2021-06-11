@@ -1,0 +1,19 @@
+.container
+{
+   margin-top: 50px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.box1
+{
+  width: 200px;
+}
+.box2{
+    position:relative;
+    max-width: 100px;
+    /* padding: auto; */
+    margin-left: -150px;
+}
+#btn{
+    margin-left: 420px;
+}
