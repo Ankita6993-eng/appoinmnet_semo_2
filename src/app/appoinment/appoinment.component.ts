@@ -48,7 +48,7 @@ export class AppoinmentComponent implements OnInit {
           }).format('h:mm A')
       );
   }
-  this.end_hours=this.start_hours;
+  //this.end_hours=this.start_hours;
   this.hours=this.start_hours;
   //console.log('this.hours', this.start_hours);
   
@@ -56,10 +56,12 @@ export class AppoinmentComponent implements OnInit {
         
   }
   onselect(val:any){
-    console.log(val)
-  let index = parseInt(val) + 1;
-  console.log('ew',index)
-   this.end_hours = this.hours.slice(index);
+    console.log(parseInt(val))
+    for(var i=0;i<=this.hours.length;i++){
+        let index = parseInt(val) + 1;
+        console.log('ew',index)
+        this.end_hours = this.start_hours.slice(index);
+    } 
   }
 
   getControls() {
