@@ -16,7 +16,8 @@ export class AppoinmentComponent implements OnInit {
 
    locale = 'en'; 
  start_hours:any = [];
-
+ end_hours:any = [];
+ hours:any=[]
   constructor(public fb:FormBuilder) {
    
    }
@@ -47,11 +48,18 @@ export class AppoinmentComponent implements OnInit {
           }).format('h:mm A')
       );
   }
-
-  console.log('this.hours', this.start_hours);
+  this.end_hours=this.start_hours;
+  this.hours=this.start_hours;
+  //console.log('this.hours', this.start_hours);
   
-    
+  //this.end_hours = this.start_hours.slice(index);  
         
+  }
+  onselect(val:any){
+    console.log(val)
+  let index = parseInt(val) + 1;
+  console.log('ew',index)
+   this.end_hours = this.hours.slice(index);
   }
 
   getControls() {

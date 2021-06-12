@@ -10,11 +10,15 @@
     <div formArrayName="schedule" *ngFor="let list of getControls(); let i=index;">
     <div [formGroupName]="i" style="display: flex">
         <input type="text" formControlName="name" placeholder="Customer name">
-        <select formControlName="start_time">
-                <option *ngFor="let hour of start_hours">{{hour}}</option>
+        <select formControlName="start_time" (change)="onselect($any($event.target).value)">
+            <ng-container *ngFor="let hours of start_hours" >
+                <option [ngValue]="hours">{{hours}}</option>
+            </ng-container>    
         </select>
         <select formControlName="end_time">
-            <option>df</option>
+        <ng-container *ngFor="let hours of end_hours" > 
+            <option [ngValue]="hours">{{hours}}</option>
+        </ng-container>
          </select> 
          <button type="button" class="btn btn-secondary" (click)="deleteScheduleGroup(i)">X</button>
     </div>    
