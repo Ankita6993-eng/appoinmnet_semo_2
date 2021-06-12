@@ -65,7 +65,7 @@ export class AppoinmentComponent implements OnInit {
     var selectedOptionIndex
     //selectedOptionIndex = this.start_hours.indexOf(this.selectedOption);
     console.log(parseInt(val))
-        let index = parseInt(val) + 1;
+        let index = parseInt(val) + 30;
         console.log('ew',index)
         this.end_hours = this.start_hours.slice(index);
   }
