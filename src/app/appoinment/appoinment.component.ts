@@ -24,34 +24,14 @@ export class AppoinmentComponent implements OnInit {
     this.appoinmentform=this.fb.group({
       schedule:new FormArray([])
     });
-    // this.date=new Date()
-    // console.log('Date()', this.date.toLocaleString('en-US', { hour: 'numeric', hour12: true }));
-    // var time=this.date.toLocaleString('en-US', { hour: 'numeric', hour12: true })
-    // console.log('time', time);
-
-    // for(var i=0;this.start_time<=10;i++){
-    //   var hh=Math.floor(this.start_time/60);
-    //   var mm=(this.start_time%60);
-    //   this.times[i]=("0" + (hh % 12)).slice(-2) + ':' + ("0" + mm).slice(-2) + this.ap[Math.floor(hh/12)];
-    //   this.start_time=this.start_time + this.interval
-    // }
-     
+    
 
     for(let hour = 9; hour < 22; hour++) {  
       for(let mins=0 ;mins < 60; mins++){
-      this.start_hours.push(moment({ hour,minutes:mins }) 
-      .format('h:mm A'));
+      this.start_hours.push(moment({ hour,minutes:mins }).format('h:mm A'));
         }
   }
   
-  //this.end_hours=this.start_hours;
-  //this.hours=this.start_hours;
-  //console.log('this.hours', this.start_hours);
-  
-  //this.end_hours = this.start_hours.slice(index);  
-  //condition['controls'].filters['controls']
- 
-  //console.log('this.times', this.appoinmentform.schedule.get('start_time').controls);
   }
   createschedule():FormGroup|any{
     return this.fb.group({
@@ -63,7 +43,6 @@ export class AppoinmentComponent implements OnInit {
   }
   onselect(val:any){
     var selectedOptionIndex
-    //selectedOptionIndex = this.start_hours.indexOf(this.selectedOption);
     console.log(parseInt(val))
         let index = parseInt(val) + 30;
         console.log('ew',index)
