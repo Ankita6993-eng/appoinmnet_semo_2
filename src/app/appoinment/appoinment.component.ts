@@ -13,8 +13,6 @@ export class AppoinmentComponent implements OnInit {
   appoinmentform:FormGroup|any;
   schedule : FormArray|any;
   isdiasplay:boolean=true
-
-   locale = 'en'; 
  start_hours:any = [];
  end_hours:any = [];
  hours:any=[]
@@ -37,48 +35,51 @@ export class AppoinmentComponent implements OnInit {
     //   this.times[i]=("0" + (hh % 12)).slice(-2) + ':' + ("0" + mm).slice(-2) + this.ap[Math.floor(hh/12)];
     //   this.start_time=this.start_time + this.interval
     // }
-    // console.log('this.times', this.times);
+     
 
-    for(let hour = 9; hour < 22; hour++) {
-      this.start_hours.push(moment({ hour }).format('h:mm A'));
-      this.start_hours.push(
-          moment({
-              hour,
-              minute: 30
-          }).format('h:mm A')
-      );
+    for(let hour = 9; hour < 22; hour++) {  
+      for(let mins=0 ;mins < 60; mins++){
+      this.start_hours.push(moment({ hour,minutes:mins }) 
+      .format('h:mm A'));
+        }
   }
+  
   //this.end_hours=this.start_hours;
-  this.hours=this.start_hours;
+  //this.hours=this.start_hours;
   //console.log('this.hours', this.start_hours);
   
   //this.end_hours = this.start_hours.slice(index);  
-        
+  //condition['controls'].filters['controls']
+ 
+  //console.log('this.times', this.appoinmentform.schedule.get('start_time').controls);
   }
-  onselect(val:any){
-    console.log(parseInt(val))
-    for(var i=0;i<=this.hours.length;i++){
-        let index = parseInt(val) + 1;
-        console.log('ew',index)
-        this.end_hours = this.start_hours.slice(index);
-    } 
-  }
-
-  getControls() {
-    return (<FormArray>this.appoinmentform.get('schedule')).controls;
-  }
-
   createschedule():FormGroup|any{
     return this.fb.group({
       name:[''],
       start_time:[''],
       end_time:['']
     })
+    
   }
+  onselect(val:any){
+    var selectedOptionIndex
+    //selectedOptionIndex = this.start_hours.indexOf(this.selectedOption);
+    console.log(parseInt(val))
+        let index = parseInt(val) + 1;
+        console.log('ew',index)
+        this.end_hours = this.start_hours.slice(index);
+  }
+
+  getControls() {
+    return (<FormArray>this.appoinmentform.get('schedule')).controls;
+  }
+
+  
 
   addschedule(){
     this.schedule=this.appoinmentform.get('schedule') as FormArray;
     this.schedule.push(this.createschedule());
+  
   }
 
   onclick(){
