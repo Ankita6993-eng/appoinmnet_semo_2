@@ -28,7 +28,7 @@ export class AppoinmentComponent implements OnInit {
 
     for(let hour = 9; hour < 22; hour++) {  
       for(let mins=0 ;mins < 60; mins++){
-      this.start_hours.push(moment({ hour,minutes:mins }).format('h:mm A'));
+      this.start_hours.push(moment({ hour,minutes:mins }).format('H:mm '));
         }
   }
   
